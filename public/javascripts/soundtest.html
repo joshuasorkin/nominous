@@ -8,7 +8,7 @@ function playNote(frequency, duration) {
   // create Oscillator node
   var oscillator = audioCtx.createOscillator();
 
-  oscillator.type = 'square';
+  oscillator.type = 'sawtooth';
   oscillator.frequency.value = frequency; // value in hertz
   oscillator.connect(audioCtx.destination);
   oscillator.start();
