@@ -4,7 +4,9 @@ class NameAnalyzer{
 
     //gets the MD5 hash of a string passed in
     getHash(name){
-        return md5(name);
+        let hash = md5(name);
+        console.log(hash);
+        return hash;
     }
 }
 
