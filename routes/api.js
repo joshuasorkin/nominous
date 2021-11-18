@@ -30,6 +30,8 @@ router.get('/:name/:birthyear', function(req, res, next) {
       }
   }
 
+  res.end(JSON.stringify(output));
+
 
 });
 

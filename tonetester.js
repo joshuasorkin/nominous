@@ -1,3 +1,6 @@
+/***code for testing Tone.js */
+
+
 const Tone = require('tone');
 
 // create two monophonic synths

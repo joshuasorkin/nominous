@@ -1,3 +1,5 @@
+/***code for testing Wiki.js */
+
 const wiki = require('wikijs').default;
 const ContentRetriever = require('./controllers/article-retriever');
 const contentRetriever = new ContentRetriever();
