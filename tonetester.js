@@ -1,5 +1,4 @@
-
-<script>
+const Tone = require('tone');
 
 // create two monophonic synths
 const synthA = new Tone.FMSynth().toDestination();
@@ -16,5 +15,3 @@ const loopB = new Tone.Loop(time => {
 Tone.Transport.start()
 // ramp up to 800 bpm over 10 seconds
 Tone.Transport.bpm.rampTo(800, 10);
-
-</script>
