@@ -1,10 +1,10 @@
 /***code for testing Wiki.js */
 
 const wiki = require('wikijs').default;
-const ContentRetriever = require('./controllers/article-retriever');
+const ContentRetriever = require('../controllers/article-retriever');
 const contentRetriever = new ContentRetriever();
 const md5 = require('blueimp-md5');
-const noun = require('./noun')
+const noun = require('../noun')
 
 //const article = contentRetriever.retrieveArticle();
 

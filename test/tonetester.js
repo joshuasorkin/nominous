@@ -1,5 +1,9 @@
 /***code for testing Tone.js */
-
+const ToneSequenceBuilder = require('../controllers/tone-sequence-builder');
+const toneSequenceBuilder = new ToneSequenceBuilder();
+const hash = '5c19522fae9201dd8bfc335155a54ed4';
+console.log(toneSequenceBuilder.hashToToneSequence(hash,4));
+return;
 
 const Tone = require('tone');
 

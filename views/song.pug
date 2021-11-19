@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    button(type = 'button' onclick='play(#{tone},#{toneSequence})')
+    function play(tone,toneSequence) {
+        let noteTime=tone.now();
+            toneSequence.forEach(noteobj=>{
+            const synthobj = new Tone.Synth().toDestination();
+            synthobj.triggerAttackRelease(`${noteobj}`, "8n",noteTime);
+            noteTime+=0.5
+        });
+    }
