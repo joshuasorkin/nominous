@@ -1,5 +1,5 @@
-# Welcome to Nominous!
-# An API for providing original content derived from a user's first name and birth year.
+# Welcome to **Nominous**!
+## An API for providing original content derived from a user's first name and birth year.
 
 To access the API and receive a paragraph of name analysis, make a GET request to:
 
