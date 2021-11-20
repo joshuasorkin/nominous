@@ -3526,7 +3526,7 @@ module.exports = [
     "shark",
     "sharon",
     "shawl",
-    "she",
+    "sheik",
     "shearling",
     "sheath",
     "shed",
