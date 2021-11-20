@@ -16,7 +16,7 @@ If there is an error, the returned value will be:
     error: [Error message]
 }
 
-[First name] can be any value other than the usual reserved characters: ! * ' ( ) ; : @ & = + $ , / ? % # [ ]
+[First name] can be any value, although you may experience unusual behavior with the reserved characters: ! * ' ( ) ; : @ & = + $ , / ? % # [ ]
 
 [Birth year] must be the current year or earlier.
 
