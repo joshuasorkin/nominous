@@ -27,6 +27,7 @@ class NounPhraseBuilder {
             //add the word from sourceWordArray at this integer index
             //to wordArray           
             const arrayIndex = (hexToInt**2)%sourceWordArray.length
+            console.log(`${arrayIndex}: ${sourceWordArray[arrayIndex]}`);
             wordArray.push(sourceWordArray[arrayIndex]);
         })
         return wordArray;
