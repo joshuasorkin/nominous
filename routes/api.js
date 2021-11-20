@@ -28,7 +28,7 @@ router.get('/:name/:birthyear', function(req, res, next) {
         }
         else{
             output = {
-                error: `Year must be ${birthyear} or before`
+                error: `Year must be ${currentYear} or before`
                 }
         }
     }
