@@ -9,7 +9,9 @@ router.get('/:name/:birthyear', function(req, res, next) {
     //get parameters from input url
     let name = req.params.name;
     let birthyear = req.params.birthyear;
+    let currentYear = new Date().getFullYear();
 
+    //todo: refactor this year test to its own module since it also appears in api.js
     //check if birth year is a valid year
     if (yearRegex.test(birthyear)){
         //check if birth year is current year or earlier
@@ -23,15 +25,20 @@ router.get('/:name/:birthyear', function(req, res, next) {
             });
         }
         else{
-            res.render('error',{
-                message: `Sorry, birth year must be ${currentYear} or before.`
+            res.render('layout',{
+                title: `A pity!`,
+                header: `I'm terribly sorry, but I can't process that.`,
+                content: `Your birth year must be ${currentYear} or before.  `
+                +`You can use a future date once I get my time machine back from the mechanic.`
             })
 
         }
     }
     else{
-        res.render('error',{
-            message: `Sorry, that birth year is invalid.`
+        res.render('layout',{
+            title: `A pity!`,
+            header: `I'm terribly sorry, but I can't process that.`,
+            content: `I don't recognize ${birthyear} as a year.`
         })
     }
 

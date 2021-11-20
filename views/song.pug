@@ -7,9 +7,23 @@ html
     
   body
     button(type = 'button' id = 'play-button' onclick = 'toneStart()') Click to play the song of your name and birth year!
+    p I recommend lowering your volume before pressing the button.
     script(type="text/javascript").
+        var noteTime;
+        var playNote = function(synthobj,toneObj){
+            let note = toneObj.note;
+            let duration = toneObj.duration;
+            console.log(`${note} ${duration} ${noteTime}`)
+            //play the note, duration, and harmonicity specified by this sequence element
+            synthobj.harmonicity.value = 2-parseFloat(`0.${duration}`);
+            synthobj.triggerAttackRelease(`${note}`, `0.${duration}`,noteTime);
+            //update current time
+            noteTime=noteTime+parseFloat(`0.${duration}`);
+        }
+
         //parse tone sequence from stringified JSON
-        var toneSequence = !{toneSequence}
+        let toneSequence = !{toneSequence}
+
         var toneStart = async function(){
             //stop functionality doesn't seem to work, but leaving this here as a placeholder
             if(Tone.Transport.state === "started"){
@@ -26,16 +40,27 @@ html
                 //initialize synthesizer
                 const synthobj = new Tone.DuoSynth().toDestination();
                 //loop through tone sequence
-                for(let i=1;i<toneSequence.length;i++){
-                    let noteObj = toneSequence[i];
-                    let note = noteObj.note;
-                    let duration = noteObj.duration;
-                    console.log(`${note} ${duration} ${noteTime}`);
-                    //play the note, duration, and harmonicity specified by this sequence element
-                    synthobj.harmonicity.value = 2-parseFloat(`0.${duration}`);
-                    synthobj.triggerAttackRelease(`${note}`, `0.${duration}`,noteTime);
-                    //update current time
-                    noteTime=noteTime+parseFloat(`0.${duration}`);
+                for(let i=0;i<toneSequence.length;i=i+2){
+                    for(let k=0;k<2;k++){
+                        for(let j=0;j<4;j++){
+                            if(i+j<toneSequence.length){
+                                let toneObj = toneSequence[i+j];
+                                console.log(`notetime: ${noteTime}`)
+                                //playNote(synthobj,toneObj);
+                                let note = toneObj.note;
+                                let duration = toneObj.duration;
+                                console.log(`${note} ${duration} ${noteTime}`)
+                                //play the note, duration, and harmonicity specified by this sequence element
+                                let durationFloat = parseFloat(`0.${duration}`)/2
+                                synthobj.harmonicity.value = 2-durationFloat;
+                                synthobj.triggerAttackRelease(`${note}`, `${durationFloat}`,noteTime);
+                                //update current time
+                                noteTime=noteTime+durationFloat;
+                            }
+
+
+                        }
+                    }
                 }
             }
         }
