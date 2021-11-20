@@ -33,10 +33,13 @@ class NounPhraseBuilder {
     }
 
     nounPhraseArray(adjectiveWord,nounWord){
+        //get the adjective array
         const adjectiveArray = this.wordArray(nounWord+adjectiveWord,this.adjective);
+        //get the noun array
         const nounArray = this.wordArray(adjectiveWord+nounWord,this.noun);
         let outputArray = [];
         for(let i=0;i<adjectiveArray.length;i++){
+            //combine each adjective and noun, and push to output
             outputArray.push(`${adjectiveArray[i]} ${nounArray[i]}`);
         }
         return outputArray;

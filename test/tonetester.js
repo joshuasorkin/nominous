@@ -1,11 +1,29 @@
 /***code for testing Tone.js */
-const ToneSequenceBuilder = require('../controllers/tone-sequence-builder');
-const toneSequenceBuilder = new ToneSequenceBuilder();
-const hash = '5c19522fae9201dd8bfc335155a54ed4';
-console.log(toneSequenceBuilder.hashToToneSequence(hash,4));
-return;
+
 
 const Tone = require('tone');
+const ToneSequenceBuilder = require('../controllers/tone-sequence-builder');
+const toneSequenceBuilder = new ToneSequenceBuilder();
+
+const play = function (tone,toneSequence) {
+    console.log("playing...")
+    let noteTime=tone.now();
+    toneSequence.forEach(noteobj=>{
+        const synthobj = new tone.Synth().toDestination();
+        synthobj.triggerAttackRelease(`${noteobj}`, "8n",noteTime);
+        noteTime+=0.5
+    });
+}
+
+const hash = '5c19522fae9201dd8bfc335155a54ed4';
+const toneSequence = toneSequenceBuilder.stringToToneSequence(hash,4);
+console.log(toneSequence);
+return;
+
+play(Tone,toneSequence)
+return;
+
+
 
 // create two monophonic synths
 const synthA = new Tone.FMSynth().toDestination();

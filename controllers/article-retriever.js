@@ -1,3 +1,7 @@
+//this class is for getting a random Wikipedia article, which will then be associated with each unique
+//name-year pair.  Not implemented in paragraph algorithm currently; here for future development
+//when database is added so we can have persistent state for each name-year pair
+
 const wiki = require('wikijs').default;
 
 class ContentRetriever{

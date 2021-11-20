@@ -3,13 +3,39 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.32/Tone.js")
+    
   body
-    button(type = 'button' onclick='play(#{tone},#{toneSequence})')
-    function play(tone,toneSequence) {
-        let noteTime=tone.now();
-            toneSequence.forEach(noteobj=>{
-            const synthobj = new Tone.Synth().toDestination();
-            synthobj.triggerAttackRelease(`${noteobj}`, "8n",noteTime);
-            noteTime+=0.5
-        });
-    }
+    button(type = 'button' id = 'play-button' onclick = 'toneStart()') Click to play the song of your name and birth year!
+    script(type="text/javascript").
+        //parse tone sequence from stringified JSON
+        var toneSequence = !{toneSequence}
+        var toneStart = async function(){
+            //stop functionality doesn't seem to work, but leaving this here as a placeholder
+            if(Tone.Transport.state === "started"){
+                console.log("stopping");
+                Tone.Transport.stop();
+            }
+            else{
+                //start Tone
+                await Tone.Transport.start();
+                console.log("audio ready");
+                console.log(Tone.Transport.state)
+                //get the initial time
+                let noteTime=Tone.now();
+                //initialize synthesizer
+                const synthobj = new Tone.DuoSynth().toDestination();
+                //loop through tone sequence
+                for(let i=1;i<toneSequence.length;i++){
+                    let noteObj = toneSequence[i];
+                    let note = noteObj.note;
+                    let duration = noteObj.duration;
+                    console.log(`${note} ${duration} ${noteTime}`);
+                    //play the note, duration, and harmonicity specified by this sequence element
+                    synthobj.harmonicity.value = 2-parseFloat(`0.${duration}`);
+                    synthobj.triggerAttackRelease(`${note}`, `0.${duration}`,noteTime);
+                    //update current time
+                    noteTime=noteTime+parseFloat(`0.${duration}`);
+                }
+            }
+        }

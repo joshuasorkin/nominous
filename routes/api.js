@@ -4,7 +4,7 @@ const yearRegex = /^[1-9]\d+$/
 const ContentCreator = require('../controllers/content-creator');
 const contentCreator = new ContentCreator();
 
-router.get('/analysis/:name/:birthyear', function(req, res, next) {
+router.get('/:name/:birthyear', function(req, res, next) {
     //get parameters from request
     let name = req.params.name;
     let birthyear = req.params.birthyear;
