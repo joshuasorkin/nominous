@@ -20,7 +20,7 @@ class ContentAssembler{
         `If you're named ${name} and you were born in the year ${year}, you are ${indefiniteArticle} ${animal}, and your life will be one of ${this.plural(nounPhraseArray[0])}.  `
         +`Your ideal career involves the pursuit of ${this.plural(nounPhraseArray[1])}, but beware that you are not corrupted `
         +`by the influence of their ${this.plural(nounPhraseArray[2])}. `
-        +`Your biography will be titled "${this.capitalize(nounPhraseArray[3])}: ${name} and The ${this.capitalize(nounPhraseArray[4])}". `
+        +`Your biography will be titled '${this.capitalize(nounPhraseArray[3])}: ${name} and the ${this.capitalize(nounPhraseArray[4])}'. `
         +`You will find true love with someone who admires ${this.plural(nounPhraseArray[6])}, provided that you woo them `
         +`with ${this.plural(nounPhraseArray[7])}.  `
         +`Your greatest asset is your ${nounPhraseArray[8]}, and you will need it, because soon `
